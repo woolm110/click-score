@@ -1,0 +1,11 @@
+{
+  "default": {
+    "width": 60,
+    "height": 44,
+    "backgroundColor": "#ffffff",
+    "textSize": 14,
+    "textAngle": 0,
+    "fontFile": "CaviarDreams.ttf",
+    "textColor": "#000000"
+  }
+}
