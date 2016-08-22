@@ -16,3 +16,6 @@
 
 ## Styles
 Any new style can be added to styles/styles.json. Create a new style and reference the name within config/tracking.json to use that style
+
+## Example uses
+Create a dynamic poll within an email. Each time a link is clicked the image showing the click percentage will be updated next time the email is reloaded. 
