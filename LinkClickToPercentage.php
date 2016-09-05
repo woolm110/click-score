@@ -180,8 +180,9 @@ class LinkClickToPercentage
 
   /**
    * outputImage
-   * output the image as a png
+   * output the image
    * @param $img
+   * @param $type
    */
   private function outputImage($img, $type = 'png')
   {
