@@ -175,8 +175,17 @@ class LinkClickToPercentage
       $percentage
     );
 
-    // output png
-    header('Content-Type:image/png');
+    $this->outputImage($img);
+  }
+
+  /**
+   * outputImage
+   * output the image as a png
+   * @param $img
+   */
+  private function outputImage($img, $type = 'png')
+  {
+    header('Content-Type:image/' . $type);
     header("Pragma-directive: no-cache");
     header("Cache-directive: no-cache");
     header("Cache-control: no-cache");
