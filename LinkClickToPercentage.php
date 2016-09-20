@@ -135,6 +135,8 @@ class LinkClickToPercentage
    */
   private function createImage()
   {
+    $this->totalClicks = $this->getLinksStatistics($this->result['urls_clicked']);
+
     $percentage = $this->getClickPercentage($this->result['urls_clicked'], $this->linkId); // get the percentage of links for url
     $style = $this->getStyleFromConfig();
 
@@ -213,11 +215,31 @@ class LinkClickToPercentage
   private function getClickPercentage($array, $str)
   {
     foreach ($array as $key => $val) {
-      if (strpos($val['url'], $str) !== false) {
-        return (round($val['click_percentage'], 2) * 100) . '%';
+      if (strpos($val['url'], 'linkID=' . $str) !== false) {
+        return round(($val['unique_clicks'] / $this->totalClicks) * 100) . '%';
       }
     }
     return null;
+  }
+
+  /**
+   * getLinksStatistics
+   * get the total number of unique clicks
+   * on tracked links
+   * @param  $array
+   * @return $totalClicks      
+   */
+  private function getLinksStatistics($array)
+  {
+    $totalClicks = 0;
+
+    foreach ($array as $key => $val) {
+      if (strpos($val['url'], 'linkID') !== false) {
+        $totalClicks = $totalClicks + $val['unique_clicks'];
+      }
+    }
+
+    return $totalClicks;
   }
 
   /**
