@@ -20,7 +20,7 @@ class ImageStyle
     $this->backgroundColor = $this->hexToRGB($backgroundColor);
     $this->textSize = $textSize;
     $this->textAngle = $textAngle;
-    $this->fontFile = __DIR__ . DIRECTORY_SEPARATOR . 'fonts/' . $fontFile;
+    $this->fontFile = __DIR__ . '/fonts/' . $fontFile;
     $this->textColor = $this->hexToRGB($textColor);
   }
 
