@@ -1,1 +1,4 @@
 .DS_Store
+config/tracking.json
+styles/styles.json
+
