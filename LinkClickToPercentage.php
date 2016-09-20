@@ -135,8 +135,6 @@ class LinkClickToPercentage
    */
   private function createImage()
   {
-    echo "<pre>"; var_dump($this->result['urls_clicked']); echo "</pre>"; exit;
-
     $percentage = $this->getClickPercentage($this->result['urls_clicked'], $this->linkId); // get the percentage of links for url
     $style = $this->getStyleFromConfig();
 
