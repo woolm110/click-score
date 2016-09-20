@@ -14,6 +14,7 @@ class LinkClickToPercentage
   const LOWER_LEFT_YPOS = 1;
   const STYLES_CONFIG_FILE = 'styles/styles.json';
   const TRACKING_CONFIG_FILE = 'config/tracking.json';
+  const COUNT = 100;
 
   /**
    * @var array
@@ -59,6 +60,10 @@ class LinkClickToPercentage
     $this->emailName = isset($_GET['emailName']) ? $_GET['emailName'] : ''; // name of email campaign in tracking.json
     $this->emailDetails = $this->getEmailDetails($this->emailName); // email config from tracking.json
     $this->stylesConfigs = json_decode(file_get_contents(__DIR__ . '/' . self::STYLES_CONFIG_FILE), true); // generic style configs
+
+    if ($this->apiKey == "API_KEY") {
+      echo "Please enter a valid API Key."; exit;
+    }
 
     $this->requestData();
     $this->createImage();
@@ -130,6 +135,8 @@ class LinkClickToPercentage
    */
   private function createImage()
   {
+    echo "<pre>"; var_dump($this->result['urls_clicked']); echo "</pre>"; exit;
+
     $percentage = $this->getClickPercentage($this->result['urls_clicked'], $this->linkId); // get the percentage of links for url
     $style = $this->getStyleFromConfig();
 
@@ -223,7 +230,7 @@ class LinkClickToPercentage
     return str_replace(
       '{{email_id}}',
       $this->emailDetails['emailId'],
-      'https://us4.api.mailchimp.com/3.0/reports/{{email_id}}/click-details'
+      'https://us4.api.mailchimp.com/3.0/reports/{{email_id}}/click-details?count=' . self::COUNT
     );
   }
 }
