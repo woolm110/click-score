@@ -58,7 +58,7 @@ class LinkClickToPercentage
     $this->linkId = isset($_GET['linkId']) ? $_GET['linkId'] : ''; // unique ident used to track each link
     $this->emailName = isset($_GET['emailName']) ? $_GET['emailName'] : ''; // name of email campaign in tracking.json
     $this->emailDetails = $this->getEmailDetails($this->emailName); // email config from tracking.json
-    $this->stylesConfigs = json_decode(file_get_contents(self::STYLES_CONFIG_FILE), true); // generic style configs
+    $this->stylesConfigs = json_decode(file_get_contents(__DIR__ . '/' . self::STYLES_CONFIG_FILE), true); // generic style configs
 
     $this->requestData();
     $this->createImage();
@@ -99,7 +99,7 @@ class LinkClickToPercentage
    */
   private function getEmailDetails($ident)
   {
-    $config = json_decode(file_get_contents(self::TRACKING_CONFIG_FILE), true);
+    $config = json_decode(file_get_contents(__DIR__ . '/' . self::TRACKING_CONFIG_FILE), true);
 
     return $config[$ident];
   }
