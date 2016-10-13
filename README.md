@@ -1,4 +1,4 @@
-# ClickScore
+# Click Score
 
 > Create a dynamic image displaying a percentage of how many times a given link has been clicked. Uses the Mailchimp API
 
